@@ -54,7 +54,7 @@ fn main() -> io::Result<()> {
     // Add the scheme file to the event queue
     const SCHEME_TOKEN: usize = 1;
     event_file.write(&Event {
-        id: scheme_file.as_raw_fd(),
+        id: scheme_file.as_raw_fd() as usize,
         flags: EVENT_READ,
         data: SCHEME_TOKEN,
     })?;
@@ -62,7 +62,7 @@ fn main() -> io::Result<()> {
     // Add the irq file to the event queue
     const IRQ_TOKEN: usize = 2;
     event_file.write(&Event {
-        id: irq_file.as_raw_fd(),
+        id: irq_file.as_raw_fd() as usize,
         flags: EVENT_READ,
         data: IRQ_TOKEN,
     })?;
